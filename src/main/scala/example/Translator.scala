@@ -3,7 +3,7 @@ package example
 
 case class Rune(
                  character: String,
-                 latinCharacters: List[String]) {
+                 latinCharacters: String*) {
   def supportsLatin(latin: String): Boolean =
     latinCharacters.contains(latin)
 
@@ -18,14 +18,14 @@ trait RuneMap {
 
 class ElderFuthark extends RuneMap {
   val runes = List(
-    Rune("ᚠ", List("F")),
-    Rune("ᚢ", List("U")),
-    Rune("ᛏ", List("T")),
-    Rune("ᚺ", List("H")),
-    Rune("ᚨ", List("A")),
-    Rune("ᚱ", List("R")),
-    Rune("ᚲ", List("K","C")),
-    Rune("ᛒ", List("B")),
+    Rune("ᚠ", "F"),
+    Rune("ᚢ", "U"),
+    Rune("ᛏ", "T"),
+    Rune("ᚺ", "H"),
+    Rune("ᚨ", "A"),
+    Rune("ᚱ", "R"),
+    Rune("ᚲ", "K","C"),
+    Rune("ᛒ", "B"),
 
   )
 }
