@@ -24,7 +24,7 @@ class ElderFuthark extends RuneMap {
     Rune("ᚺ", "H"),
     Rune("ᚨ", "A"),
     Rune("ᚱ", "R"),
-    Rune("ᚲ", "K","C"),
+    Rune("ᚲ", "K", "C"),
     Rune("ᛒ", "B"),
 
   )
@@ -36,18 +36,16 @@ class Translator {
     text
       .map(x => x.toString)
       .map { character =>
-        println("handling " + character)
-        val rune = runeMap.runes.find(_.character == character).orNull
-        if (rune!= null) {
-           rune.latinCharacters.head
-        } else {
-           character
+        runeMap.runes.find(_.character equals character) match {
+          case Some(r: Rune) => r.latinCharacters.head
+          case _ => character
         }
       }.mkString
   }
 
   def translateFromLatin(text: String, runeMap: RuneMap): String = {
     text.toCharArray.toString
+    throw new NotImplementedError()
   }
 }
 
