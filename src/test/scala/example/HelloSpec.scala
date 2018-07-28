@@ -30,4 +30,8 @@ class ElderFutharkTranslation extends FlatSpec with Matchers {
   "FUTHARK" should "translate to ᚠᚢᚦᚨᚱᚲ" in {
     translator.translateFromLatin("FUTHARK", elderFuthark) shouldEqual "ᚠᚢᚦᚨᚱᚲ"
   }
+
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ" should "translate to ᚨᛒᚲᛞᛖᚠᚷᚺᛜᛃᚲᛚᛗᚾᛟᛈᚲᚱᛋᛏᚢᚠᚹᚲᛋᛃᛉ" in {
+    translator.translateFromLatin("ABCDEFGHIJKLMNOPQRSTUVWXYZ",elderFuthark) shouldEqual "ᚨᛒᚲᛞᛖᚠᚷᚺᛜᛃᚲᛚᛗᚾᛟᛈᚲᚱᛋᛏᚢᚠᚹᚲᛋᛃᛉ"
+  }
 }
