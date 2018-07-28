@@ -24,8 +24,10 @@ class ElderFuthark extends RuneMap {
     Rune("ᚺ", "H"),
     Rune("ᚨ", "A"),
     Rune("ᚱ", "R"),
+    Rune("ᚦ", "TH"),
     Rune("ᚲ", "K", "C"),
     Rune("ᛒ", "B"),
+
 
   )
 }
@@ -44,8 +46,20 @@ class Translator {
   }
 
   def translateFromLatin(text: String, runeMap: RuneMap): String = {
-    text.toCharArray.toString
-    throw new NotImplementedError()
+
+    val sortedRunes = runeMap.runes.sortWith((x,y) => x.latinCharacters.head.length > y.latinCharacters.head.length)
+    sortedRunes.foldLeft(text) { (text, rune) =>
+      text.replace(
+        rune.latinCharacters.head,
+        rune.character)
+    }
+
+
+  }
+
+  def sortByLength(s1: String, s2: String) = {
+    println("comparing %s and %s".format(s1, s2))
+    s1.length > s2.length
   }
 }
 

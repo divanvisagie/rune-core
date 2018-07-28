@@ -12,7 +12,9 @@ class ElderFutharkTranslation extends FlatSpec with Matchers {
   val elderFuthark = new ElderFuthark()
   val translator = Translator()
 
-  "ᚨ" should "translate to A" in {
+
+  //To latin
+  "ᚨ" should "translate to latin A" in {
     translator.translateToLatin("ᚨ", elderFuthark) shouldEqual "A"
   }
 
@@ -20,7 +22,12 @@ class ElderFutharkTranslation extends FlatSpec with Matchers {
     translator.translateToLatin("ᛒ", elderFuthark) shouldEqual "B"
   }
 
-  "ᚠᚢᛏᚺᚨᚱᚲ" should "translate to latin futhark" in {
-    translator.translateToLatin("ᚠᚢᛏᚺᚨᚱᚲ", elderFuthark) shouldEqual "FUTHARK"
+  "ᚠᚢᚦᚨᚱᚲ" should "translate to latin FUTHARK" in {
+    translator.translateToLatin("ᚠᚢᚦᚨᚱᚲ", elderFuthark) shouldEqual "FUTHARK"
+  }
+
+  //From latin
+  "FUTHARK" should "translate to ᚠᚢᚦᚨᚱᚲ" in {
+    translator.translateFromLatin("FUTHARK", elderFuthark) shouldEqual "ᚠᚢᚦᚨᚱᚲ"
   }
 }
