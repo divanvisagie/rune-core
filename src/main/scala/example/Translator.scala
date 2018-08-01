@@ -3,7 +3,7 @@ package example
 
 case class Rune(
                  character: String,
-                 latinCharacters: String*) {
+                 latinCharacters: Seq[String]) {
   def supportsLatin(latin: String): Boolean =
     latinCharacters.contains(latin)
 
@@ -14,21 +14,27 @@ case class Rune(
 
 trait RuneMap {
   val runes: List[Rune]
+
+  implicit def tupleToRune(t: (String, String)): Rune = Rune(t._1, List(t._2))
+  implicit def complexTupleToRune(t: (String, Seq[String])): Rune = Rune(t._1, t._2)
 }
 
+
 class ElderFuthark extends RuneMap {
-  val runes = List(
-    Rune("ᚠ", "F"),
-    Rune("ᚢ", "U"),
-    Rune("ᛏ", "T"),
-    Rune("ᚺ", "H"),
-    Rune("ᚨ", "A"),
-    Rune("ᚱ", "R"),
-    Rune("ᚦ", "TH"),
-    Rune("ᚲ", "K", "C"),
-    Rune("ᚷ", "G"),
-    Rune("ᚹ", "W"),
-    Rune("ᛒ", "B"),
+
+  val runes: List[Rune] = List(
+    ("ᚠ", "F"),
+    ("ᚢ", "U"),
+    ("ᛏ", "T"),
+    ("ᚺ", "H"),
+    ("ᚨ", "A"),
+    ("ᚱ", "R"),
+    ("ᚦ", "TH"),
+    ("ᚲ", Seq("K", "C")),
+    ("ᚷ", "G"),
+    ("ᚹ", "W"),
+    ("ᛒ", "B")
+
 
 
   )
